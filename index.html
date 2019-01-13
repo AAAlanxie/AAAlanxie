@@ -148,7 +148,7 @@
     <div class="post-header index">
         <h1 class="title">
             <a href="/2019/01/13/TEST-PAGE/">
-                TEST PAGE
+                Untitled
             </a>
         </h1>
         <div class="post-info">
@@ -162,7 +162,105 @@
 
     
         <div class="content">
-            <p>终于成功啦</p>
+            <p>title: 配置BLOG的整个过程<br>date: 2019-01-13 10:25:15<br>tags:</p>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><ul>
+<li><p>安装Node.js</p>
+<ul>
+<li><p>使用包管理工具homebrew</p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新为最新版本</p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//单独运行</span><br><span class="line">brew update</span><br><span class="line">brew upgrade node</span><br><span class="line">npm install -g npm</span><br><span class="line">//一条运行</span><br><span class="line">brew update &amp;&amp; brew upgrade node &amp;&amp; npm install -g npm</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>安装git</p>
+<ul>
+<li><p>安装完成Node.js后只需要输入下方命令即可</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>安装Hexo</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建本地文件夹，并使用cd指令进入其中</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>本地启动</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>预览页面，使用本地链接<a href="https://link.jianshu.com/?t=http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="注册github并创建仓库"><a href="#注册github并创建仓库" class="headerlink" title="注册github并创建仓库"></a>注册github并创建仓库</h2><p>使用<a href="https://www.jianshu.com/p/0c545b6f601a文章里所用即可" target="_blank" rel="noopener">https://www.jianshu.com/p/0c545b6f601a文章里所用即可</a></p>
+<p><img src="/Users/xietianqi/blog/source/_posts/assets/register.png" alt="register"></p>
+<p>注意：这里一定要用username.github.io的形式，我自己在注册的时候这里没有注意导致浪费了很多时间</p>
+<h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><ul>
+<li><p>生成ssh key</p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 你的邮箱</span><br></pre></td></tr></table></figure>
+<p><img src="/Users/xietianqi/blog/source/_posts/assets/ssh.png" alt="ssh"></p>
+<p>登录Github，右上角 头像 -&gt; Settings —&gt; SSH nd GPG keys —&gt; New SSH key 。把复制的内容粘贴到key中，填好title并点击 Add SSH key</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证</p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br><span class="line">注意要输入yes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>之后还需要设置username和email,为了记录每次提交的记录</p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name your name</span><br><span class="line">git config --global user.email your_email@youremail.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意，我们在配置之后使用下列命令查看密钥列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -l</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若里面没有你使用的密钥，使用如下命令添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/xxxxx</span><br></pre></td></tr></table></figure>
+<p>即上面图中的id_rsa</p>
+</li>
+</ul>
+<h2 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h2><ul>
+<li><p>安装部署插件</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>打开_config.yml文件，在最底部修改部署配置，注意严格的空格（这里指冒号后面一个空格）</p>
+<ul>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: xxxxxxxx</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意，这里的repo使用自己库的地址（最好在github上复制下来）</p>
+</li>
+</ul>
+</li>
+<li><p>保存后在终端执行</p>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>部署完成后可在浏览器输入 yourname.github.io 这样就能看到自己一个属于自己的博客了。</p>
+<h2 id="关于主题"><a href="#关于主题" class="headerlink" title="关于主题"></a>关于主题</h2><p>主题查看官网<a href="https://link.jianshu.com/?t=https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<p>选好自己想用的使用git clone 并 配置相关文件即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 本地创建的根目录下</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+<p>（在官网上会有git clone的地址，这里以next为例）</p>
+<p>切换到根目录下打开_config.yml文件，找到theme字段，将其值更改为主题名即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
 
         </div>
     
@@ -233,7 +331,7 @@
         <ul>
             
             <li>
-                <a class="footer-post" href="/2019/01/13/TEST-PAGE/">TEST PAGE</a>
+                <a class="footer-post" href="/2019/01/13/TEST-PAGE/">Untitled</a>
             </li>
             
             <li>
