@@ -29,7 +29,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="配置blog的整个过程">
+        <meta property="og:title" content="配置blog的全过程">
     
 
     <!--Open Graph Description-->
@@ -51,7 +51,7 @@
 
     <!-- Title -->
     
-    <title>配置blog的整个过程 - AAAlanxie</title>
+    <title>配置blog的全过程 - AAAlanxie</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -155,8 +155,8 @@
 
     <div class="post-header">
         <h1 class="title">
-            <a href="/2019/01/13/TEST-PAGE/">
-                配置blog的整个过程
+            <a href="/2019/01/13/test/">
+                配置blog的全过程
             </a>
         </h1>
         <div class="post-info">
@@ -218,16 +218,15 @@
 </ul>
 </li>
 </ul>
-<h2 id="注册github并创建仓库"><a href="#注册github并创建仓库" class="headerlink" title="注册github并创建仓库"></a>注册github并创建仓库</h2><p>使用<a href="https://www.jianshu.com/p/0c545b6f601a文章里所用即可" target="_blank" rel="noopener">https://www.jianshu.com/p/0c545b6f601a文章里所用即可</a></p>
-<p><img src="/Users/xietianqi/blog/source/_posts/assets/register.png" alt="register"></p>
-<p>注意：这里一定要用username.github.io的形式，我自己在注册的时候这里没有注意导致浪费了很多时间</p>
+<h2 id="注册github并创建仓库"><a href="#注册github并创建仓库" class="headerlink" title="注册github并创建仓库"></a>注册github并创建仓库</h2><p>使用<a href="https://www.jianshu.com/p/0c545b6f601a" target="_blank" rel="noopener">这个文章</a>里所用即可</p>
+<p>注意：注册时这里一定要用username.github.io的形式，我自己在注册的时候这里没有注意导致浪费了很多时间</p>
 <h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><ul>
 <li><p>生成ssh key</p>
 </li>
 <li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 你的邮箱</span><br></pre></td></tr></table></figure>
-<p><img src="/Users/xietianqi/blog/source/_posts/assets/ssh.png" alt="ssh"></p>
-<p>登录Github，右上角 头像 -&gt; Settings —&gt; SSH nd GPG keys —&gt; New SSH key 。把复制的内容粘贴到key中，填好title并点击 Add SSH key</p>
+<p>登录Github，右上角 头像 -&gt; Settings —&gt; SSH nd GPG keys —&gt; New SSH key </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<p>把本目录下xxx.pub文件内容复制粘贴到key中，填好title并点击 Add SSH key</p>
 </li>
 <li><p>验证</p>
 </li>
@@ -266,12 +265,22 @@
 </li>
 </ul>
 <p>部署完成后可在浏览器输入 yourname.github.io 这样就能看到自己一个属于自己的博客了。</p>
-<h2 id="关于主题"><a href="#关于主题" class="headerlink" title="关于主题"></a>关于主题</h2><p>主题查看官网<a href="https://link.jianshu.com/?t=https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+<h2 id="关于主题"><a href="#关于主题" class="headerlink" title="关于主题"></a>关于主题</h2><p>主题查看[官网][<a href="https://hexo.io/themes/]" target="_blank" rel="noopener">https://hexo.io/themes/]</a></p>
 <p>选好自己想用的使用git clone 并 配置相关文件即可</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> 本地创建的根目录下</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 <p>（在官网上会有git clone的地址，这里以next为例）</p>
 <p>切换到根目录下打开_config.yml文件，找到theme字段，将其值更改为主题名即可</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<h3 id="附录（hexo的一些命令含义）"><a href="#附录（hexo的一些命令含义）" class="headerlink" title="附录（hexo的一些命令含义）"></a>附录（hexo的一些命令含义）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>新建一个网站。如果没有设置 <code>folder</code> ，Hexo 默认在目前的文件夹建立网站。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>生成静态文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>部署网站</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>启动服务器。默认情况下，访问网址为： <code>http://localhost:4000/</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p>清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)。</p>
 
     </div>
 
@@ -309,11 +318,7 @@
         <ul>
             
             <li>
-                <a class="footer-post" href="/2019/01/13/TEST-PAGE/">配置blog的整个过程</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/01/12/hello-world/">Hello World</a>
+                <a class="footer-post" href="/2019/01/13/test/">配置blog的全过程</a>
             </li>
             
         </ul>
