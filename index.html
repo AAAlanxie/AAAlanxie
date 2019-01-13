@@ -207,12 +207,14 @@
 </li>
 </ul>
 <h2 id="注册github并创建仓库"><a href="#注册github并创建仓库" class="headerlink" title="注册github并创建仓库"></a>注册github并创建仓库</h2><p>使用<a href="https://www.jianshu.com/p/0c545b6f601a" target="_blank" rel="noopener">这个文章</a>里所用即可</p>
+<p><img src="/2019/01/13/test/register.png" alt="register"></p>
 <p>注意：注册时这里一定要用username.github.io的形式，我自己在注册的时候这里没有注意导致浪费了很多时间</p>
 <h2 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h2><ul>
 <li><p>生成ssh key</p>
 </li>
 <li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 你的邮箱</span><br></pre></td></tr></table></figure>
 <p>登录Github，右上角 头像 -&gt; Settings —&gt; SSH nd GPG keys —&gt; New SSH key </p>
+<p><img src="/2019/01/13/test/ssh.png" alt="ssh"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
 <p>把本目录下xxx.pub文件内容复制粘贴到key中，填好title并点击 Add SSH key</p>
 </li>
