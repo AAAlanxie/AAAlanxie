@@ -176,9 +176,9 @@
 <li>你的IPv6⽹网段有⼈人做爬⾍虫，⽹网段被封。</li>
 </ul>
 <a id="more"></a>
-<h3 id="1-ipv6网段被封"><a href="#1-ipv6网段被封" class="headerlink" title="1.ipv6网段被封"></a>1.ipv6网段被封</h3><p>我们需要做的是强制vps用ipv4来访问，具体方法是在/etc/sysctl.conf后追加</p>
+<h3 id="1-ipv6网段被封"><a href="#1-ipv6网段被封" class="headerlink" title="1.    ipv6网段被封"></a>1.    ipv6网段被封</h3><p>我们需要做的是强制vps用ipv4来访问，具体方法是在/etc/sysctl.conf后追加</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># disable ipv6</span></span><br><span class="line">net.ipv6.conf.all.disable_ipv6=1</span><br><span class="line">net.ipv6.conf.default.disable_ipv6=1</span><br><span class="line">net.ipv6.conf.lo.disable_ipv6=1</span><br></pre></td></tr></table></figure>
-<h3 id="2-ipv4网段被封"><a href="#2-ipv4网段被封" class="headerlink" title="2.ipv4网段被封"></a>2.ipv4网段被封</h3><p>我们需要做的是强制vps使用ipv6访问，更改vps的hosts中指定Google Scholar的ipv6地址，即编辑/etc/hosts后追加：</p>
+<h3 id="2-ipv4网段被封"><a href="#2-ipv4网段被封" class="headerlink" title="2.    ipv4网段被封"></a>2.    ipv4网段被封</h3><p>我们需要做的是强制vps使用ipv6访问，更改vps的hosts中指定Google Scholar的ipv6地址，即编辑/etc/hosts后追加：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">## Scholar 学术搜索</span></span><br><span class="line">2404:6800:4004:81a::200e scholar.google.cn 2404:6800:4004:81a::200e scholar.google.com.hk 2404:6800:4004:81a::200e scholar.google.com 2404:6800:4004:81a::200e scholar.l.google.com</span><br></pre></td></tr></table></figure>
 <h3 id="注意：每次修改配置后，需要对服务器reboot"><a href="#注意：每次修改配置后，需要对服务器reboot" class="headerlink" title="注意：每次修改配置后，需要对服务器reboot"></a>注意：每次修改配置后，需要对服务器reboot</h3>
     </div>
