@@ -10,6 +10,12 @@
 
     <!--Description-->
     
+        <meta name="description" content="解决VPS通过SS访问⾕谷歌学术受限可能的原因以及解决方法
+
+你的VPS被⼈人⽤用来做爬⾍虫爬Google，IP被封。
+你的IPv4⽹网段有⼈人做爬⾍虫，⽹网段被封。
+你的IPv6⽹网段有⼈人做爬⾍虫，⽹网段被封。">
+    
 
     <!--Author-->
     
@@ -18,7 +24,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="AAAlanxie">
+        <meta property="og:title" content="解决VPS通过SS访问⾕谷歌学术受限">
     
 
     <!--Open Graph Description-->
@@ -29,7 +35,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -40,7 +46,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2019/1 - AAAlanxie</title>
+    <title>解决VPS通过SS访问⾕谷歌学术受限 - AAAlanxie</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -127,9 +133,7 @@
 <div class="container">
 
     <!-- Main Content -->
-    
-
-<div class="row">
+    <div class="row">
     <div class="col-sm-12">
 
         <!--Title and Logo-->
@@ -137,34 +141,61 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">2019/1</h1>
-        
     </div>
 </header>
 
-        <section class="main archive-container">
+        <section class="main">
             
-                <div class="archive-post">
-    <a href="/2019/01/17/slove-ss/">
-        <span class="archive-date">
-            Jan 2019
-        </span>
-        解决VPS通过SS访问⾕谷歌学术受限
-    </a>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/01/17/slove-ss/">
+                解决VPS通过SS访问⾕谷歌学术受限
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-01-17</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>解决<strong>VPS</strong>通过<strong>SS</strong>访问⾕谷歌学术受限可能的原因以及解决方法</p>
+<ul>
+<li>你的VPS被⼈人⽤用来做爬⾍虫爬Google，IP被封。</li>
+<li>你的IPv4⽹网段有⼈人做爬⾍虫，⽹网段被封。</li>
+<li>你的IPv6⽹网段有⼈人做爬⾍虫，⽹网段被封。</li>
+</ul>
+<a id="more"></a>
+<h3 id="1-ipv6网段被封"><a href="#1-ipv6网段被封" class="headerlink" title="1.ipv6网段被封"></a>1.ipv6网段被封</h3><p>我们需要做的是强制vps用ipv4来访问，具体方法是在/etc/sysctl.conf后追加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># disable ipv6</span></span><br><span class="line">net.ipv6.conf.all.disable_ipv6=1</span><br><span class="line">net.ipv6.conf.default.disable_ipv6=1</span><br><span class="line">net.ipv6.conf.lo.disable_ipv6=1</span><br></pre></td></tr></table></figure>
+<h3 id="2-ipv4网段被封"><a href="#2-ipv4网段被封" class="headerlink" title="2.ipv4网段被封"></a>2.ipv4网段被封</h3><p>我们需要做的是强制vps使用ipv6访问，更改vps的hosts中指定Google Scholar的ipv6地址，即编辑/etc/hosts后追加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">## Scholar 学术搜索</span></span><br><span class="line">2404:6800:4004:81a::200e scholar.google.cn 2404:6800:4004:81a::200e scholar.google.com.hk 2404:6800:4004:81a::200e scholar.google.com 2404:6800:4004:81a::200e scholar.l.google.com</span><br></pre></td></tr></table></figure>
+<h3 id="注意：每次修改配置后，需要对服务器reboot"><a href="#注意：每次修改配置后，需要对服务器reboot" class="headerlink" title="注意：每次修改配置后，需要对服务器reboot"></a>注意：每次修改配置后，需要对服务器reboot</h3>
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
 </div>
-            
-                <div class="archive-post">
-    <a href="/2019/01/13/test/">
-        <span class="archive-date">
-            Jan 2019
-        </span>
-        配置blog的全过程
-    </a>
-</div>
-            
         </section>
+
     </div>
 </div>
+
 
 </div>
 
