@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="本篇介绍数据准备，包括数据的特征选择和规范化操作等">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="ml_pre_data">
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="AAAlanxie">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>ml_pre_data - AAAlanxie</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/01/23/ml-pre-data/">
+                ml_pre_data
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-01-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>本篇介绍数据准备，包括数据的特征选择和规范化操作等</p>
+<a id="more"></a>
+<h3 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h3><ul>
+<li><p>调节数据</p>
+<ul>
+<li><p>调整为0-1之间</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> set_printoptions</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line"></span><br><span class="line">scaler = MinMaxScaler(feature_range=(<span class="number">0</span>, <span class="number">1</span>))</span><br><span class="line">rescaledX = scaler.fit_transform(X)	<span class="comment">#规范化</span></span><br><span class="line"></span><br><span class="line">set_printoptions(precision=<span class="number">3</span>) <span class="comment">#设置精度，小数点后三位</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>标准化数据</p>
+<ul>
+<li><p>将均值和标准差为0和标准差为1的高斯分布和不同均值和标准差的属性转换为标准高斯分布的一种有用技术</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> set_printoptions</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line">scaler = StandardScaler().fit(X)</span><br><span class="line">rescaledX = scaler.transform(X)</span><br><span class="line"></span><br><span class="line">set_printoptions(precision=<span class="number">3</span>) <span class="comment">#设置精度，小数点后三位</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>规范化数据</p>
+<ul>
+<li><p>用于具有不同尺度属性的稀疏数据集(大量的零)</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> set_printoptions</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line"></span><br><span class="line">scaler = Normalizer().fit(X)</span><br><span class="line">rescaledX = scaler.transform(X)</span><br><span class="line"></span><br><span class="line">set_printoptions(precision=<span class="number">3</span>) <span class="comment">#设置精度，小数点后三位</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>二进制化数据</p>
+<ul>
+<li><p>用于希望得到清晰值的概率（小于阈值为0，大于为1）</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> set_printoptions</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Binarizer</span><br><span class="line"></span><br><span class="line">scaler = Binarizer(threshold=<span class="number">0.0</span>).fit(X)</span><br><span class="line">rescaledX = scaler.transform(X)</span><br><span class="line"></span><br><span class="line">set_printoptions(precision=<span class="number">3</span>) <span class="comment">#设置精度，小数点后三位</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><ul>
+<li><p>单变量选择</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> set_printoptions</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectKBest</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> chi2</span><br><span class="line"></span><br><span class="line">test = SelectKBest(score_func=chi2, k=<span class="number">4</span>)</span><br><span class="line">fit = test.fit(X, Y)</span><br><span class="line"><span class="comment"># summarize scores</span></span><br><span class="line">set_printoptions(precision=<span class="number">3</span>)</span><br><span class="line">print(fit.scores_)</span><br><span class="line">features = fit.transform(X)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>递归特性消除</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> RFE</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"></span><br><span class="line">model = LogisticRegression()</span><br><span class="line">rfe = RFE(model, <span class="number">3</span>)</span><br><span class="line">fit = rfe.fit(X, Y)</span><br><span class="line">print(<span class="string">"Num Features: %d"</span> % fit.n_features_)</span><br><span class="line">print(<span class="string">"Selected Features: %s"</span> % fit.support_)</span><br><span class="line">print(<span class="string">"Feature Ranking: %s"</span> % fit.ranking_)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>主成分分析（我们常说的PCA）</p>
+<ul>
+<li><p>旨在利用降维的思想，把多指标转化为少数几个综合指标。提取方差最大的进行利用。</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = Axes3D(fig, rect=[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>], elev=<span class="number">30</span>, azim=<span class="number">20</span>)</span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], X[:, <span class="number">2</span>])</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line">pca = PCA(n_components=<span class="number">3</span>)</span><br><span class="line">fit = pca.fit(X)</span><br><span class="line">X_new = pca.transform(X)</span><br><span class="line">plt.scatter(X_new[:, <span class="number">0</span>], X_new[:, <span class="number">1</span>],marker=<span class="string">'o'</span>,c=Y)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># print("方差: %s" % fit.explained_variance_ratio_)</span></span><br><span class="line"><span class="comment"># print(fit.components_)</span></span><br></pre></td></tr></table></figure>
+<p>如下是类似的想要实现的效果图（三维降为二维，代码也是）</p>
+</li>
+<li><p><img src="/2019/01/23/ml-pre-data/pca_3d.png" width="600" height="600" div="" align="center"></p>
+</li>
+<li><p><img src="/2019/01/23/ml-pre-data/pca_2d.png" width="600" height="600" div="" align="center"></p>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/23/ml-pre-data/">ml_pre_data</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/22/machine-learning/">machine_learning之分析数据</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/17/model-method/">建模中用到的一些方法</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/17/slove-ss/">解决VPS通过SS访问⾕谷歌学术受限</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
