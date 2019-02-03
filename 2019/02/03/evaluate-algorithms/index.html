@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="算法评估主要介绍以下种
+
+设置训练和测试集
+k-fold交叉验证
+留一法（leave-one-out）">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="John Doe">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="machine_learning之算法评估">
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="AAAlanxie">
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article">
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary">
+    
+
+    <!-- Title -->
+    
+    <title>machine_learning之算法评估 - AAAlanxie</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2019/02/03/evaluate-algorithms/">
+                machine_learning之算法评估
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-03</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <p>算法评估主要介绍以下种</p>
+<ul>
+<li>设置训练和测试集</li>
+<li>k-fold交叉验证</li>
+<li>留一法（leave-one-out）</li>
+</ul>
+<a id="more"></a>
+<h4 id="设置训练集和数据集"><a href="#设置训练集和数据集" class="headerlink" title="设置训练集和数据集"></a>设置训练集和数据集</h4><ul>
+<li><p>顾名思义，我们将原始数据分为训练集和数据集即可。</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"><span class="comment"># 原始数据集的导入</span></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"></span><br><span class="line">X = data[:,<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line">Y = data[:,<span class="number">8</span>]</span><br><span class="line">test_size = <span class="number">0.33</span></span><br><span class="line">seed = <span class="number">7</span></span><br><span class="line">X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size,</span><br><span class="line">    random_state=seed)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(X_train, Y_train)</span><br><span class="line">result = model.score(X_test, Y_test)</span><br><span class="line">print(<span class="string">"精确度: %.3f%%"</span> % (result*<span class="number">100.0</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="k-fold交叉验证"><a href="#k-fold交叉验证" class="headerlink" title="k-fold交叉验证"></a>k-fold交叉验证</h4><ul>
+<li><p>在数据挖掘中，k一般取10</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"><span class="comment"># 原始数据集的导入</span></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"></span><br><span class="line">X = data[:,<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line">Y = data[:,<span class="number">8</span>]</span><br><span class="line">num_folds = <span class="number">10</span></span><br><span class="line">seed = <span class="number">7</span></span><br><span class="line">kfold = KFold(n_splits=num_folds, random_state=seed)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">results = cross_val_score(model, X, Y, cv=kfold)</span><br><span class="line">print(<span class="string">"平均值（标准差）: %.3f%% (%.3f%%)"</span> % (results.mean()*<span class="number">100.0</span>, results.std()*<span class="number">100.0</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="留一法"><a href="#留一法" class="headerlink" title="留一法"></a>留一法</h4><ul>
+<li><p>交叉验证中折叠的大小为1</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> LeaveOneOut</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"><span class="comment"># 原始数据集的导入</span></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"></span><br><span class="line">X = data[:,<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line">Y = data[:,<span class="number">8</span>]</span><br><span class="line">loocv = LeaveOneOut()</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">results = cross_val_score(model, X, Y, cv=loocv)</span><br><span class="line">print(<span class="string">"平均值（标准差）: %.3f%% (%.3f%%)"</span> % (results.mean()*<span class="number">100.0</span>, results.std()*<span class="number">100.0</span>))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="机器学习算法的性能指标"><a href="#机器学习算法的性能指标" class="headerlink" title="机器学习算法的性能指标"></a>机器学习算法的性能指标</h3><ul>
+<li><p>这里都是用k-fold算法进行检验</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"><span class="comment"># 原始数据集的导入</span></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"></span><br><span class="line">X = data[:,<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line">Y = data[:,<span class="number">8</span>]</span><br><span class="line">kfold = KFold(n_splits=<span class="number">10</span>, random_state=<span class="number">7</span>)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line"></span><br><span class="line">scoring = <span class="string">'accuracy'</span></span><br><span class="line">results = cross_val_score(model, X, Y, cv=kfold, scoring=scoring)</span><br><span class="line">print(<span class="string">"Accuracy: %.3f (%.3f)"</span> % (results.mean(), results.std()))</span><br><span class="line"></span><br><span class="line">scoring = <span class="string">'neg_log_loss'</span></span><br><span class="line">results = cross_val_score(model, X, Y, cv=kfold, scoring=scoring)</span><br><span class="line">print(<span class="string">"Logloss: %.3f (%.3f)"</span> % (results.mean(), results.std()))</span><br><span class="line"></span><br><span class="line">scoring = <span class="string">'roc_auc'</span></span><br><span class="line">results = cross_val_score(model, X, Y, cv=kfold, scoring=scoring)</span><br><span class="line">print(<span class="string">"AUC: %.3f (%.3f)"</span> % (results.mean(), results.std()))</span><br><span class="line"></span><br><span class="line"><span class="comment">#  平均绝对误差</span></span><br><span class="line">scoring = <span class="string">'neg_mean_absolute_error'</span></span><br><span class="line">results = cross_val_score(model, X, Y, cv=kfold, scoring=scoring)</span><br><span class="line">print(<span class="string">"MAE: %.3f (%.3f)"</span> % (results.mean(), results.std()))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 均方误差</span></span><br><span class="line">scoring = <span class="string">'neg_mean_squared_error'</span></span><br><span class="line">results = cross_val_score(model, X, Y, cv=kfold, scoring=scoring) </span><br><span class="line">print(<span class="string">"MSE: %.3f (%.3f)"</span> % (results.mean(), results.std()))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算R^2</span></span><br><span class="line">scoring = <span class="string">'r2'</span></span><br><span class="line">results = cross_val_score(model, X, Y, cv=kfold, scoring=scoring)</span><br><span class="line">print(<span class="string">"R^2: %.3f (%.3f)"</span> % (results.mean(), results.std()))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>混淆矩阵和分类报告</p>
+<ul>
+<li>混淆矩阵：<a href="https://baike.baidu.com/item/混淆矩阵/10087822?fr=aladdin" target="_blank" rel="noopener">简介</a></li>
+</ul>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line"></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"><span class="comment"># 原始数据集的导入</span></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"></span><br><span class="line">X = data[:,<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line">Y = data[:,<span class="number">8</span>]</span><br><span class="line">test_size = <span class="number">0.33</span></span><br><span class="line">seed = <span class="number">7</span></span><br><span class="line">X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size,</span><br><span class="line">    random_state=seed)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(X_train, Y_train)</span><br><span class="line">predicted = model.predict(X_test)</span><br><span class="line">matrix = confusion_matrix(Y_test, predicted)</span><br><span class="line">print(matrix)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>分类报告：<a href="https://blog.csdn.net/akadiao/article/details/78788864" target="_blank" rel="noopener">简介</a></li>
+</ul>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> classification_report</span><br><span class="line"></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"><span class="comment"># 原始数据集的导入</span></span><br><span class="line"><span class="comment"># --------</span></span><br><span class="line"></span><br><span class="line">X = data[:,<span class="number">0</span>:<span class="number">8</span>]</span><br><span class="line">Y = data[:,<span class="number">8</span>]</span><br><span class="line">test_size = <span class="number">0.33</span></span><br><span class="line">seed = <span class="number">7</span></span><br><span class="line">X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size,</span><br><span class="line">    random_state=seed)</span><br><span class="line">model = LogisticRegression()</span><br><span class="line">model.fit(X_train, Y_train)</span><br><span class="line">predicted = model.predict(X_test)</span><br><span class="line">matrix = classification_report(Y_test, predicted)</span><br><span class="line">print(matrix)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/03/evaluate-algorithms/">machine_learning之算法评估</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/31/gitlab/">git同步</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/23/ml-pre-data/">machine_learning之数据准备</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/01/22/machine-learning/">machine_learning之分析数据</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
