@@ -10,6 +10,8 @@
 
     <!--Description-->
     
+        <meta name="description" content="本篇为抽查分类算法">
+    
 
     <!--Author-->
     
@@ -18,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="AAAlanxie">
+        <meta property="og:title" content="ml-spot-check">
     
 
     <!--Open Graph Description-->
@@ -29,7 +31,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website">
+        <meta property="og:type" content="article">
     
 
     <!--Page Cover-->
@@ -40,7 +42,7 @@
 
     <!-- Title -->
     
-    <title>AAAlanxie</title>
+    <title>ml-spot-check - AAAlanxie</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -135,17 +137,14 @@
     <div class="logo">
         <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-            <h1 id="main-title" class="title">AAAlanxie</h1>
-        
     </div>
 </header>
 
         <section class="main">
             
-                
 <div class="post">
 
-    <div class="post-header index">
+    <div class="post-header">
         <h1 class="title">
             <a href="/2019/03/26/ml-spot-check/">
                 ml-spot-check
@@ -164,266 +163,88 @@
         </div>
     </div>
 
-    
-        <div class="content">
-            <ul>
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <ul>
 <li>本篇为抽查分类算法</li>
 </ul>
-        </div>
-        <a href="/2019/03/26/ml-spot-check/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/02/03/evaluate-algorithms/">
-                machine_learning之算法评估
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-02-03</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/机器学习/">机器学习</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>算法评估主要介绍以下种</p>
+<a id="more"></a>
+<p>当有一个数据集的时候，我们不知道哪个算法对我们的数据集最有效，所以您必须使用反复试验来发现在您的问题上做得很好的算法的候选列表，然后您可以加倍努力并进一步优化。我把这个过程称为抽查。</p>
+<p>这一节我们将展示六种分类算法</p>
 <ul>
-<li>设置训练和测试集</li>
-<li>k-fold交叉验证</li>
-<li>留一法（leave-one-out）</li>
+<li>线性<ul>
+<li>逻辑回归</li>
+<li>线性判别</li>
 </ul>
-        </div>
-        <a href="/2019/02/03/evaluate-algorithms/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/01/31/gitlab/">
-                git同步
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-01-31</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/git/">git</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>几个git指令</p>
-        </div>
-        <a href="/2019/01/31/gitlab/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/01/23/ml-pre-data/">
-                machine_learning之数据准备
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-01-23</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/机器学习/">机器学习</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>本篇介绍数据准备，包括数据的特征选择和规范化操作等</p>
-        </div>
-        <a href="/2019/01/23/ml-pre-data/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/01/22/machine-learning/">
-                machine_learning之分析数据
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-01-22</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/机器学习/">机器学习</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>预测建模机器学习项目可以分为六个步骤</p>
-<ul>
-<li>本篇为分析数据</li>
+</li>
+<li>非线性机器学习<ul>
+<li>k近邻</li>
+<li>贝叶斯分类</li>
+<li>分类树，回归树</li>
+<li>支持向量机（SVM)<h3 id="线性分类算法算法"><a href="#线性分类算法算法" class="headerlink" title="线性分类算法算法"></a>线性分类算法算法</h3></li>
 </ul>
-        </div>
-        <a href="/2019/01/22/machine-learning/" class="read-more">Read More</a>
-    
+</li>
+<li>逻辑回归 <a href="https://baike.baidu.com/item/logistic回归/2981575?fromtitle=逻辑回归&amp;fromid=17202449&amp;fr=aladdin" target="_blank" rel="noopener">简介</a><ul>
+<li><code>`</code> python<h1 id="Logistic-Regression-Classification"><a href="#Logistic-Regression-Classification" class="headerlink" title="Logistic Regression Classification"></a>Logistic Regression Classification</h1>  from pandas import read_csv<br>  from sklearn.model_selection import KFold<br>  from sklearn.model_selection import cross_val_score<br>  from sklearn.linear_model import LogisticRegression</li>
+</ul>
+</li>
+</ul>
+<pre><code>filename = &apos;&apos;
+names = [&apos;&apos;,&apos;&apos;] dataframe = read_csv(filename, names=names)
+array = dataframe.values
+X = array[:,0:8]
+Y = array[:,8]
+num_folds = 10
+kfold = KFold(n_splits=10, random_state=7)
+model = LogisticRegression()
+results = cross_val_score(model, X, Y, cv=kfold)
+# print(results.mean())
+</code></pre><ul>
+<li>线性判别 <a href="https://baike.baidu.com/item/线性判别分析/22657333" target="_blank" rel="noopener">简介</a><ul>
+<li><code>`</code> python<h1 id="LDA-Classification"><a href="#LDA-Classification" class="headerlink" title="LDA Classification"></a>LDA Classification</h1>  from pandas import read_csv<br>  from sklearn.model_selection import KFold<br>  from sklearn.model_selection import cross_val_score<br>  from sklearn.discriminant_analysis import LinearDiscriminantAnalysis<br>  filename = ‘’<br>  names = [‘’,’’] dataframe = read_csv(filename, names=names)<br>  array = dataframe.values<br>  X = array[:,0:8]<br>  Y = array[:,8]<br>  num_folds = 10<br>  kfold = KFold(n_splits=10, random_state=7)<br>  model = LinearDiscriminantAnalysis()<br>  results = cross_val_score(model, X, Y, cv=kfold)<br>  print(results.mean())<h3 id="非线性分类算法"><a href="#非线性分类算法" class="headerlink" title="非线性分类算法"></a>非线性分类算法</h3></li>
+</ul>
+</li>
+<li>k近邻(KNN) <a href="">简介</a><ul>
+<li><code>`</code> python<h1 id="KNN-Classification"><a href="#KNN-Classification" class="headerlink" title="KNN Classification"></a>KNN Classification</h1>  from pandas import read_csvv<br>  from sklearn.model_selection import KFold<br>  from sklearn.model_selection import cross_val_score<br>  from sklearn.neighbors import KNeighborsClassifier<br>  filename = ‘’<br>  names = [‘’,’’] dataframe = read_csv(filename, names=names)<br>  array = dataframe.values<br>  X = array[:,0:8]<br>  Y = array[:,8]<br>  num_folds = 10<br>  kfold = KFold(n_splits=10, random_state=7)<br>  model = KNeighborsClassifier()<br>  results = cross_val_score(model, X, Y, cv=kfold)<br>  print(results.mean())</li>
+</ul>
+</li>
+<li>贝叶斯分类 <a href="https://baike.baidu.com/item/贝叶斯分类算法/7346561?fr=aladdin" target="_blank" rel="noopener">简介</a><ul>
+<li><code>`</code> python<h1 id="Gaussian-Naive-Bayes-Classification"><a href="#Gaussian-Naive-Bayes-Classification" class="headerlink" title="Gaussian Naive Bayes Classification"></a>Gaussian Naive Bayes Classification</h1>  from pandas import read_csv<br>  from sklearn.model_selection import KFold<br>  from sklearn.model_selection import cross_val_score<br>  from sklearn.naive_bayes import GaussianNB<br>  filename = ‘’<br>  names = [‘’,’’] dataframe = read_csv(filename, names=names)<br>  array = dataframe.values<br>  X = array[:,0:8]<br>  Y = array[:,8]<br>  kfold = KFold(n_splits=10, random_state=7)<br>  model = GaussianNB()<br>  results = cross_val_score(model, X, Y, cv=kfold)<br>  print(results.mean())</li>
+</ul>
+</li>
+<li>回归树(连续型数据)，分类树（离散型数据)  <a href="https://blog.csdn.net/weixin_40604987/article/details/79296427" target="_blank" rel="noopener">简介</a><ul>
+<li><code>`</code> python<h1 id="CART-Classification"><a href="#CART-Classification" class="headerlink" title="CART Classification"></a>CART Classification</h1>  from pandas import read_csv<br>  from sklearn.model_selection import KFold<br>  from sklearn.model_selection import cross_val_score<br>  from sklearn.tree import DecisionTreeClassifier<br>  filename = ‘’<br>  names = [‘’,’’] dataframe = read_csv(filename, names=names)<br>  array = dataframe.values<br>  X = array[:,0:8]<br>  Y = array[:,8]<br>  kfold = KFold(n_splits=10, random_state=7)<br>  model = DecisionTreeClassifier()<br>  results = cross_val_score(model, X, Y, cv=kfold)<br>  print(results.mean())</li>
+</ul>
+</li>
+<li>支持向量机(SVM) <a href="https://blog.csdn.net/sinat_20177327/article/details/79729551" target="_blank" rel="noopener">简介</a><ul>
+<li><code>`</code> python<h1 id="SVM-Classification"><a href="#SVM-Classification" class="headerlink" title="SVM Classification"></a>SVM Classification</h1>  from pandas import read_csv<br>  from sklearn.model_selection import KFold<br>  from sklearn.model_selection import cross_val_score<br>  from sklearn.svm import SVC<br>  filename = ‘’<br>  names = [‘’,’’] dataframe = read_csv(filename, names=names)<br>  array = dataframe.values<br>  X = array[:,0:8]<br>  Y = array[:,8]<br>  kfold = KFold(n_splits=10, random_state=7)<br>  model = SVC()<br>  results = cross_val_score(model, X, Y, cv=kfold)<br>  print(results.mean())</li>
+</ul>
+</li>
+</ul>
 
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/01/17/model-method/">
-                建模中用到的一些方法
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-01-17</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/建模/">建模</a>
-                </span>
-            
-        </div>
     </div>
 
     
-        <div class="content">
-            <p>记录了建模过程中用的一些方法</p>
-<ul>
-<li>线性规划</li>
-<li>回归</li>
-<li>最优化算法</li>
-<li>简单神经网络</li>
-</ul>
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/机器学习/">#机器学习</a> <a href="/tags/抽查算法/">#抽查算法</a>
         </div>
-        <a href="/2019/01/17/model-method/" class="read-more">Read More</a>
+    
+
+    <!-- Comments -->
     
 
 </div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/01/17/slove-ss/">
-                解决VPS通过SS访问⾕谷歌学术受限
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-01-17</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/shadowsocks/">shadowsocks</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>解决<strong>VPS</strong>通过<strong>SS</strong>访问⾕谷歌学术受限可能的原因以及解决方法</p>
-<ul>
-<li>你的VPS被⼈用来做爬⾍爬Google，IP被封。</li>
-<li>你的IPv4⽹段有⼈做爬虫，网段被封。</li>
-<li>你的IPv6网段有⼈做爬虫，网段被封。</li>
-</ul>
-        </div>
-        <a href="/2019/01/17/slove-ss/" class="read-more">Read More</a>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/01/13/test/">
-                配置blog的全过程
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-01-13</span>
-            
-            
-            
-                <span class="category">
-                    <a href="/categories/博客配置/">博客配置</a>
-                </span>
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <p>本文记录了配置博客的全过程，主要分为四个部分</p>
-<ul>
-<li>前期准备</li>
-<li>注册github并创建仓库</li>
-<li>配置ssh</li>
-<li>部署的github</li>
-</ul>
-        </div>
-        <a href="/2019/01/13/test/" class="read-more">Read More</a>
-    
-
-</div>
-            
         </section>
+
     </div>
 </div>
-
-
-
-
 
 
 </div>
